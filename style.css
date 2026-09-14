@@ -565,6 +565,26 @@ p {
   margin-bottom: 0.4em;
 }
 
+/* Ingebouwde GetGrib-content (lesrooster, inschrijfformulier). De iframe krijgt zelf geen
+   vaste hoogte-truc met aspect-ratio, want dit is een lijst die in de hoogte kan groeien,
+   geen video. In plaats daarvan een ruime, herschaalbare minimumhoogte. */
+.embed-getgrib {
+  width: 100%;
+}
+
+.getgrib-iframe {
+  width: 100%;
+  min-height: 900px;
+  border: none;
+  border-radius: var(--radius);
+}
+
+@media (max-width: 600px) {
+  .getgrib-iframe {
+    min-height: 1200px;
+  }
+}
+
 /* Sluitingsdagen / eenvoudige tabellen */
 
 .info-table {

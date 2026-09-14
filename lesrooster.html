@@ -57,14 +57,17 @@
 
   <section class="sport-body">
     <div class="section-inner sport-body-inner reveal">
-      <!-- GETGRIB-PLUGIN: hier komt de website-plugincode voor het lesrooster. De
-           website-pluginregel is volgens Mary binnen, maar de eigenlijke embedcode staat
-           nergens lokaal opgeslagen (gecontroleerd in de klantmap, 15 september 2026) —
-           bij haar opvragen en hier plakken zodra die er is. Nooit een eigen roostertabel
-           bouwen, zie CLAUDE.md. -->
-      <div class="embed-placeholder">
-        <strong>Hier komt het lesrooster</strong>
-        De website-plugincode van GetGrib moet hier nog worden geplakt.
+      <!-- GETGRIB-PLUGIN: lesroosterembed, ontvangen van Jolanda op 14 september 2026.
+           De kleuren (rood D30000) staan zo ingesteld in Mary's eigen GetGrib-beheeromgeving
+           en wijken af van het koraalrood/grijs van de rest van de site — dit is bewust niet
+           overschreven, want de kleurinstelling hoort bij het GetGrib-account, niet bij deze
+           pagina. Wijzigen kan alleen via GetGrib zelf, niet hier. -->
+      <div class="embed-getgrib">
+        <iframe
+          src="https://sportcentrumrust.gotgrib.nl/calendar?schedule_id=258&amp;layout[type]=list&amp;layout%5BcalendarBackgroundColor%5D=D30000&amp;layout%5BcalendarFontColor%5D=FFFFFF&amp;layout%5BdateFontColor%5D=000000&amp;layout%5BdateBackgroundColor%5D=F7F7F7&amp;layout%5BbackgroundColor%5D=FFFFFF&amp;layout%5BbuttonFontColor%5D=FFFFFF&amp;layout%5BbuttonBackgroundColor%5D=D30000"
+          title="Actueel lesrooster Sportcentrum Rust"
+          loading="lazy"
+          class="getgrib-iframe"></iframe>
       </div>
     </div>
   </section>
