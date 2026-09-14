@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ooievaarspas - Sportcentrum Rust</title>
+<meta name="description" content="Sporten bij Sportcentrum Rust in Den Haag met de Ooievaarspas van de gemeente Den Haag.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#hoofdinhoud">Ga naar de inhoud</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="assets/logo.png" alt="Sportcentrum Rust" width="240" height="73" class="logo-img">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="hoofdmenu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="sr-only">Menu</span>
+    </button>
+    <nav class="main-nav" id="hoofdmenu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="over-ons.html">Over ons</a></li>
+        <li><a href="sporten.html">Sporten</a></li>
+        <li><a href="lesrooster.html">Lesrooster</a></li>
+        <li><a href="tarieven.html">Tarieven</a></li>
+        <li><a href="ooievaarspas.html" aria-current="page">Ooievaarspas</a></li>
+        <li><a href="sluitingsdagen.html">Sluitingsdagen</a></li>
+        <li><a href="wedstrijdverslagen.html">Wedstrijdverslagen</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="inschrijven.html" class="nav-cta">Inschrijven</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="hoofdinhoud">
+
+  <section class="page-header">
+    <div class="section-inner page-header-inner">
+      <h1>Sporten met de Ooievaarspas</h1>
+      <span class="accent-rule" aria-hidden="true"></span>
+      <p class="page-header-lead">
+        Heb je een Ooievaarspas van de gemeente Den Haag? Dan is sporten bij Sportcentrum
+        Rust ook voor jou binnen bereik.
+      </p>
+    </div>
+  </section>
+
+  <section class="sport-body">
+    <div class="section-inner sport-body-inner reveal">
+      <!-- Beeldlink rechtstreeks van ooievaarspas.nl zelf, bevestigd 14 september 2026 —
+           geen rechtenvraag nodig, zie SPORTCENTRUM_RUST_INFO.md. -->
+      <img class="ooievaarspas-banner-img"
+           src="https://ooievaarspas.nl/wp-content/uploads/2024/02/OP_welkom.png"
+           alt="Welkom bij de Ooievaarspas">
+      <p>
+        De Ooievaarspas is de kortingspas van de gemeente Den Haag voor inwoners met een
+        laag inkomen. Met deze pas kun je tegen een lager tarief meedoen aan sport en
+        activiteiten in de stad, ook bij Sportcentrum Rust.
+      </p>
+      <p class="placeholder-tekst">
+        De precieze voorwaarden en het bedrag van de korting bij Sportcentrum Rust zijn nog
+        [Te verzamelen] bij de klant of de gemeente Den Haag. Zodra die bekend zijn, komen
+        ze hier te staan.
+      </p>
+    </div>
+  </section>
+
+  <section class="page-cta">
+    <div class="section-inner page-cta-inner">
+      <h2>Vraag over de Ooievaarspas?</h2>
+      <div class="hero-actions">
+        <a href="contact.html" class="button button-accent">Neem contact op</a>
+        <a href="sporten.html" class="button button-outline-dark">Bekijk alle sporten</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-block">
+      <h2 class="footer-heading">Sportcentrum Rust</h2>
+      <p>Oude Middenweg 239-a<br>2491 AH Den Haag</p>
+    </div>
+    <div class="footer-block">
+      <h2 class="footer-heading">Contact</h2>
+      <p>
+        <a href="tel:0707856741">070 785 67 41</a><br>
+        <a href="mailto:info@sportcentrumrust.nl">info@sportcentrumrust.nl</a>
+      </p>
+    </div>
+    <div class="footer-block">
+      <h2 class="footer-heading">Volg ons</h2>
+      <p class="social-links">
+        <a href="#" aria-label="Sportcentrum Rust op Facebook (nog niet gekoppeld)" class="social-placeholder">Facebook</a>
+        <a href="#" aria-label="Sportcentrum Rust op Instagram (nog niet gekoppeld)" class="social-placeholder">Instagram</a>
+      </p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="contact.html">Contact</a>
+      <a href="sluitingsdagen.html">Sluitingsdagen</a>
+    </nav>
+  </div>
+  <p class="footer-copy">© <span id="jaar"></span> Sportcentrum Rust. Alle rechten voorbehouden.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

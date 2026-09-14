@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Sportcentrum Rust</title>
+<meta name="description" content="Neem contact op met Sportcentrum Rust in Den Haag: adres, telefoon, e-mail, openingstijden en contactformulier.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#hoofdinhoud">Ga naar de inhoud</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="assets/logo.png" alt="Sportcentrum Rust" width="240" height="73" class="logo-img">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="hoofdmenu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="sr-only">Menu</span>
+    </button>
+    <nav class="main-nav" id="hoofdmenu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="over-ons.html">Over ons</a></li>
+        <li><a href="sporten.html">Sporten</a></li>
+        <li><a href="lesrooster.html">Lesrooster</a></li>
+        <li><a href="tarieven.html">Tarieven</a></li>
+        <li><a href="ooievaarspas.html">Ooievaarspas</a></li>
+        <li><a href="sluitingsdagen.html">Sluitingsdagen</a></li>
+        <li><a href="wedstrijdverslagen.html">Wedstrijdverslagen</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+        <li><a href="inschrijven.html" class="nav-cta">Inschrijven</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="hoofdinhoud">
+
+  <section class="page-header">
+    <div class="section-inner page-header-inner">
+      <h1>Contact</h1>
+      <span class="accent-rule" aria-hidden="true"></span>
+      <p class="page-header-lead">
+        Vragen, aanmelden of gewoon even kennismaken: we horen graag van je.
+      </p>
+    </div>
+  </section>
+
+  <section class="sport-body">
+    <div class="section-inner reveal">
+
+      <!-- "Hoe kunnen we u helpen?"-keuzemenu, besloten 11 september 2026. De knoppen
+           hieronder zijn de voorbeeldvragen uit het dummyplan (Website_Dummyplan.md) — nog
+           niet de definitieve set, dat is nog [Te verzamelen]. Elke knop vult alleen het
+           onderwerp-veld van het formulier vooraf in, geen apart systeem. -->
+      <h2>Hoe kunnen we u helpen?</h2>
+      <div class="helpmenu" role="group" aria-label="Kies een onderwerp">
+        <button type="button" class="helpmenu-button" data-onderwerp="Ik wil me inschrijven">Ik wil me inschrijven</button>
+        <button type="button" class="helpmenu-button" data-onderwerp="Vraag over tarieven">Ik heb een vraag over tarieven</button>
+        <button type="button" class="helpmenu-button" data-onderwerp="Iets anders">Iets anders</button>
+      </div>
+
+      <div class="contact-grid">
+        <div>
+          <h2>Gegevens</h2>
+          <ul class="contact-info-list">
+            <li>Oude Middenweg 239-a, 2491 AH Den Haag</li>
+            <li><a href="tel:0707856741">070 785 67 41</a></li>
+            <li><a href="mailto:info@sportcentrumrust.nl">info@sportcentrumrust.nl</a></li>
+          </ul>
+
+          <table class="info-table">
+            <caption>Openingstijden</caption>
+            <thead>
+              <tr><th>Dag</th><th>Tijden</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Maandag</td><td>7:30–11:30, 16:30–21:30</td></tr>
+              <tr><td>Dinsdag</td><td>16:30–22:00</td></tr>
+              <tr><td>Woensdag</td><td>7:30–22:00</td></tr>
+              <tr><td>Donderdag</td><td>16:30–21:00</td></tr>
+              <tr><td>Vrijdag</td><td>7:30–11:30, 16:30–22:00</td></tr>
+              <tr><td>Zaterdag</td><td>8:30–13:00</td></tr>
+              <tr><td>Zondag</td><td class="placeholder-tekst">[nog navragen]</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <h2>Stuur een bericht</h2>
+          <!-- Formulier verstuurt nu nog niets: e-mailintegratie moet nog ingericht worden
+               op de TransIP-hosting (toegezegd in de offerte), dat hoort bij de techniek
+               die Jeroen regelt. Het action-attribuut komt erbij zodra dat klaarstaat. -->
+          <form class="contact-form">
+            <div class="form-veld">
+              <label for="naam">Naam</label>
+              <input type="text" id="naam" name="naam" required>
+            </div>
+            <div class="form-veld">
+              <label for="email">E-mailadres</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-veld">
+              <label for="onderwerp">Onderwerp</label>
+              <input type="text" id="onderwerp" name="onderwerp">
+            </div>
+            <div class="form-veld">
+              <label for="bericht">Bericht</label>
+              <textarea id="bericht" name="bericht" required></textarea>
+            </div>
+            <button type="submit" class="button button-accent">Versturen</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-block">
+      <h2 class="footer-heading">Sportcentrum Rust</h2>
+      <p>Oude Middenweg 239-a<br>2491 AH Den Haag</p>
+    </div>
+    <div class="footer-block">
+      <h2 class="footer-heading">Contact</h2>
+      <p>
+        <a href="tel:0707856741">070 785 67 41</a><br>
+        <a href="mailto:info@sportcentrumrust.nl">info@sportcentrumrust.nl</a>
+      </p>
+    </div>
+    <div class="footer-block">
+      <h2 class="footer-heading">Volg ons</h2>
+      <p class="social-links">
+        <a href="#" aria-label="Sportcentrum Rust op Facebook (nog niet gekoppeld)" class="social-placeholder">Facebook</a>
+        <a href="#" aria-label="Sportcentrum Rust op Instagram (nog niet gekoppeld)" class="social-placeholder">Instagram</a>
+      </p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="contact.html">Contact</a>
+      <a href="sluitingsdagen.html">Sluitingsdagen</a>
+    </nav>
+  </div>
+  <p class="footer-copy">© <span id="jaar"></span> Sportcentrum Rust. Alle rechten voorbehouden.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

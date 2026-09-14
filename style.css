@@ -1,0 +1,969 @@
+/* Sportcentrum Rust — basisstijl
+   Kleurenschema en sfeer: zie Moodboard-visueel-ontwerp.md (warmgrijs monochroom,
+   koraalrood als enige accent, rustige Japandi-sfeer). Lettertype: Manrope
+   (schreefloos, rustig, modern — referentie All Star Jiu Jitsu, zie moodboard §3). */
+
+:root {
+  /* Basispalet uit het moodboard */
+  --kleur-achtergrond: #D8D2C5;
+  --kleur-vlak: #A89B85;
+  /* Iets donkerder dan het moodboard-getal (#7B7060), voor voldoende contrast (WCAG AA)
+     op zowel de crème kaarten als de lichtgrijze achtergrond. */
+  --kleur-tekst-zacht: #5C5347;
+  /* Lichte, warme tint van dezelfde familie — alleen voor gedempte tekst op de donkere
+     (houtskool) vlakken, zoals het copyright in de footer. */
+  --kleur-tekst-zacht-op-donker: #C9BFAC;
+  --kleur-tekst: #4A4844;
+  --kleur-hout: #8B6B4A;
+
+  /* Het echte rood van het logo (gepipetteerd uit logo-embleem-schoon.png en
+     geverifieerd tegen de gevelfoto), niet meer de eerdere werktint. Dit rood is fors
+     donkerder/verzadigder dan de vorige terracotta-benadering, dus haalt op zichzelf al
+     ruim de 4.5:1-contrasteis met witte tekst — de "donker"-variant is er voor diepte op
+     knoppen en hover, niet omdat het anders zou moeten van toegankelijkheid. */
+  --kleur-accent: #B5011C;
+  --kleur-accent-donker: #8C0016;
+  --kleur-accent-hover: #6E0011;
+  /* Alleen voor het ene geval waar het echte rood zelf te donker is om nog af te steken:
+     tekst op de donkere (houtskool) footer-achtergrond. Zelfde familie, iets lichter. */
+  --kleur-accent-op-donker: #D6483A;
+
+  --kleur-wit: #F7F4EE;
+
+  --lettertype: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --max-breedte: 72rem;
+  --radius: 4px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--lettertype);
+  background: var(--kleur-achtergrond);
+  color: var(--kleur-tekst);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 0.6em;
+  color: var(--kleur-tekst);
+}
+
+h1 {
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+}
+
+h3 {
+  font-size: 1.15rem;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--kleur-tekst);
+  color: var(--kleur-wit);
+  padding: 0.75em 1.2em;
+  z-index: 100;
+  border-radius: 0 0 var(--radius) 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+.section-inner {
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+/* Header / navigatie */
+
+.site-header {
+  background: var(--kleur-achtergrond);
+  border-bottom: 1px solid var(--kleur-vlak);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-inner {
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Het logobestand van de huidige site heeft een eigen witte pil-vorm als achtergrond
+   (onderdeel van het ontwerp, geen toevallige achtergrond) — dat wit hoort te blijven.
+   In plaats van die rechte beeldrand hard tegen de crème headerachtergrond te laten
+   staan, krijgt het logo hier een eigen afgerond "kaartje" met een zachte schaduw, zodat
+   het los oogt in plaats van als een wit blok. */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0.9rem;
+  background: var(--kleur-wit);
+  border-radius: 999px;
+  box-shadow: 0 2px 10px rgba(74, 72, 68, 0.16);
+}
+
+.logo-img {
+  display: block;
+  height: 36px;
+  width: auto;
+}
+
+.nav-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-toggle-bar {
+  width: 24px;
+  height: 2px;
+  background: var(--kleur-tekst);
+  display: block;
+}
+
+.main-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(80vw, 320px);
+  background: var(--kleur-wit);
+  box-shadow: -2px 0 12px rgba(74, 72, 68, 0.15);
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  padding: 5rem 2rem 2rem;
+}
+
+.main-nav.is-open {
+  transform: translateX(0);
+}
+
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--kleur-tekst);
+}
+
+.main-nav a[aria-current="page"] {
+  color: var(--kleur-accent);
+}
+
+.nav-cta {
+  display: inline-block;
+  background: var(--kleur-accent-donker);
+  color: var(--kleur-wit) !important;
+  padding: 0.6em 1.1em;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .main-nav {
+    position: static;
+    height: auto;
+    width: auto;
+    background: none;
+    box-shadow: none;
+    transform: none;
+    padding: 0;
+  }
+
+  .main-nav ul {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.65rem 1.1rem;
+    font-size: 0.92rem;
+  }
+}
+
+@media (min-width: 1240px) {
+  .main-nav ul {
+    gap: 0.85rem 1.6rem;
+    font-size: 1rem;
+  }
+}
+
+/* Hero */
+
+.hero {
+  background: var(--kleur-tekst);
+  color: var(--kleur-wit);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Echte dojofoto (huidige site) als sfeervolle achtergrond, met een donker warm
+   filter eroverheen zodat de tekst leesbaar blijft — zelfde houtskooltint als het
+   effen vlak dat hier eerder stond, nu met diepte. Heel langzame, nauwelijks
+   zichtbare inzoom: "rustige, tempogevende beweging" uit het moodboard, geen
+   decoratie die opvalt. */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.55;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-bg {
+    animation: zachtInzoomen 24s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes zachtInzoomen {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    115deg,
+    rgba(74, 72, 68, 0.97) 0%,
+    rgba(74, 72, 68, 0.88) 45%,
+    rgba(74, 72, 68, 0.55) 100%
+  );
+}
+
+/* Het echte embleem, ronddraaiend — referentie The Dojo USA uit het moodboard. De
+   rechter witte vleugel steekt bewust door de ring heen naar buiten (zie de gevelfoto),
+   dus het draaipunt ligt op het middelpunt van de cirkel zelf, niet op het midden van
+   de afbeelding — anders zou de vleugel als een loszwevend uitsteeksel rondtollen in
+   plaats van als vast onderdeel van één draaiend embleem. Heel langzaam: dit is een
+   accent, geen blikvanger. */
+.hero-embleem {
+  position: absolute;
+  top: -22%;
+  right: -12%;
+  /* Breder dan voorheen: het bestand kreeg er bij de punt 5/7-fix 30px doorzichtige marge
+     rondom bij (nodig voor het ronde knipvlak, zie hieronder), waardoor de cirkel zelf een
+     kleiner deel van het canvas inneemt dan daarvoor (900→960px, terwijl de cirkel op de
+     afbeelding zelf niet is veranderd). Zonder deze correctie oogde het embleem op de site
+     dus kleiner, ook al is er niets aan de cirkel zelf gewijzigd. Factor 960/900 = 1,0667. */
+  width: 61.9vw;
+  max-width: 533px;
+  height: auto;
+  z-index: 2;
+  opacity: 0.95;
+  transform-origin: 49.2% 50%;
+  /* Zonder dit knipt de rechte rand van de hero-sectie soms dwars door de ring heen
+     zodra het beeld (een rechthoek met wat lucht eromheen) gedraaid staat — bij
+     0°/180°/270° viel dat niet op, maar rond 90°/135° schoof er randinhoud precies over
+     de bovenrand van de hero. Een rond knipvlak, dat om hetzelfde middelpunt meedraait,
+     lost dat op: een cirkel blijft een cirkel ongeacht de rotatiestand. */
+  clip-path: circle(47% at 49.2% 50%);
+  /* Laatste redmiddel voor het knikje dat Jolanda tijdens het draaien blijft zien, ook
+     nadat het bronbestand en de clip-path-cirkel allebei twee keer gecontroleerd zijn en
+     kloppen: mogelijk een renderartefact van de browser bij het herberekenen van pixels
+     tijdens de rotatie van een platte PNG (geen vectorbron beschikbaar, zie
+     Moodboard-visueel-ontwerp.md §4b). Dit dwingt scherpere randinterpolatie af in plaats
+     van de gladde, maar bij rotatie soms net iets vervormende standaardmethode. */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-embleem {
+    animation: langzaamDraaien 90s linear infinite;
+  }
+}
+
+@keyframes langzaamDraaien {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 3;
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  padding: 5rem 1.5rem 4.5rem;
+}
+
+.hero h1 {
+  color: var(--kleur-wit);
+  max-width: 16ch;
+}
+
+.hero-lead {
+  font-size: 1.1rem;
+  max-width: 42ch;
+  color: var(--kleur-achtergrond);
+}
+
+.hero-offer {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--kleur-wit);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Knoppen */
+
+.button {
+  display: inline-block;
+  padding: 0.85em 1.5em;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.button-accent {
+  background: var(--kleur-accent-donker);
+  color: var(--kleur-wit);
+}
+
+.button-accent:hover {
+  background: var(--kleur-accent-hover);
+}
+
+.button-outline {
+  border: 1.5px solid currentColor;
+  color: var(--kleur-wit);
+}
+
+.hero .button-outline:hover {
+  background: rgba(247, 244, 238, 0.1);
+}
+
+/* Sporten */
+
+.sports {
+  background: var(--kleur-achtergrond);
+}
+
+.section-lead {
+  max-width: 60ch;
+  color: var(--kleur-tekst-zacht);
+}
+
+.sports-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 620px) {
+  .sports-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 980px) {
+  .sports-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.sport-card {
+  /* Geen gekleurde accentrand: dat las als het generieke "AI SaaS"-kaartpatroon
+     (impeccable: side-tab), en past sowieso niet bij de terughoudende Japandi-sfeer
+     uit het moodboard. Rust komt nu uit het vlak zelf, niet uit een randje. */
+  background: var(--kleur-wit);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sport-card p {
+  color: var(--kleur-tekst-zacht);
+  font-size: 0.95rem;
+}
+
+/* Ronde sporticoontjes: witte silhouetten (assets/sporticonen/) op een cirkel in het
+   logorood, zelfde opzet als het ronddraaiende hero-embleem maar dan stilstaand en
+   per sport. */
+.sport-icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--kleur-accent-donker);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-bottom: 0.25rem;
+}
+
+.sport-icon-wrap img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Placeholder voor sporten waar nog geen icoon voor gemaakt kon worden (Cross
+   Training, Strength, Total Body Circuit — wachten op een Gemini API-sleutel voor
+   het icoon-generatiescript, zie CLAUDE.md). Bewust géén rode cirkel: dat zou een
+   afgerond icoon suggereren dat er niet is. Een gestippelde rand maakt in één oogopslag
+   duidelijk dat dit tijdelijk is. */
+.sport-icon-wrap.sport-icon-placeholder {
+  background: transparent;
+  border: 2px dashed var(--kleur-tekst-zacht);
+}
+
+.sport-icon-wrap.sport-icon-placeholder svg {
+  width: 26px;
+  height: 26px;
+  stroke: var(--kleur-tekst-zacht);
+}
+
+/* Sportpagina (individuele sport) */
+
+.sport-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.sport-detail-header .sport-icon-wrap {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 0;
+}
+
+.sport-detail-header .sport-icon-wrap img {
+  width: 40px;
+  height: 40px;
+}
+
+.sport-body {
+  background: var(--kleur-wit);
+}
+
+.sport-body-inner {
+  padding-top: 1rem;
+  max-width: 68ch;
+}
+
+.sport-body-inner p {
+  color: var(--kleur-tekst);
+}
+
+.sport-body-inner a {
+  color: var(--kleur-accent);
+  text-decoration: underline;
+}
+
+.back-to-overview {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--kleur-accent);
+}
+
+/* Placeholder voor een nog te plakken GetGrib-embed (lesrooster, inschrijfformulier) of
+   voor content die nog niet binnen is. Bewust géén kaartachtergrond, zodat het niet als
+   afgewerkt onderdeel oogt. */
+.embed-placeholder {
+  border: 2px dashed var(--kleur-vlak);
+  border-radius: var(--radius);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--kleur-tekst-zacht);
+  max-width: 60ch;
+}
+
+.embed-placeholder strong {
+  display: block;
+  color: var(--kleur-tekst);
+  margin-bottom: 0.4em;
+}
+
+/* Sluitingsdagen / eenvoudige tabellen */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.info-table caption {
+  text-align: left;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--kleur-tekst);
+}
+
+.info-table th,
+.info-table td {
+  text-align: left;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--kleur-vlak);
+}
+
+.info-table th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--kleur-tekst-zacht);
+}
+
+.placeholder-tekst {
+  color: var(--kleur-tekst-zacht);
+  font-style: italic;
+}
+
+/* Contact */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 860px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.helpmenu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1rem 0 2rem;
+}
+
+.helpmenu-button {
+  background: var(--kleur-wit);
+  border: 1.5px solid var(--kleur-vlak);
+  border-radius: 999px;
+  padding: 0.55em 1.1em;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--kleur-tekst);
+}
+
+.helpmenu-button:hover,
+.helpmenu-button.is-actief {
+  border-color: var(--kleur-accent);
+  color: var(--kleur-accent);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-veld {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-veld label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form-veld input,
+.form-veld textarea {
+  font-family: var(--lettertype);
+  font-size: 1rem;
+  padding: 0.65em 0.8em;
+  border: 1.5px solid var(--kleur-vlak);
+  border-radius: var(--radius);
+  background: var(--kleur-wit);
+  color: var(--kleur-tekst);
+}
+
+.form-veld textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-info-list {
+  list-style: none;
+  margin: 1rem 0 2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contact-info-list a {
+  color: var(--kleur-accent);
+  text-decoration: underline;
+}
+
+/* Ooievaarspas */
+
+.ooievaarspas-banner-img {
+  width: 100%;
+  border-radius: var(--radius);
+  margin: 1.5rem 0 2rem;
+}
+
+.sport-link {
+  display: inline-block;
+  margin-top: 0.25rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--kleur-accent);
+}
+
+/* Ooievaarspas-teaser */
+
+/* Donkere achtergrond (zelfde toon als de hero) in plaats van het middengrijze
+   --kleur-vlak: wit erop haalde daar geen 4.5:1 contrast. */
+.ooievaarspas-teaser {
+  background: var(--kleur-tekst);
+}
+
+.ooievaarspas-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.ooievaarspas-inner h2,
+.ooievaarspas-inner p {
+  color: var(--kleur-wit);
+}
+
+.ooievaarspas-inner .button-outline {
+  color: var(--kleur-wit);
+}
+
+@media (min-width: 720px) {
+  .ooievaarspas-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* Pagina-header voor binnenpagina's (niet Home) — neutraal, het koraalrood blijft hier
+   beperkt tot het dunne lijntje onder de titel (Japandi-regel: spaarzaam op elke pagina
+   behalve Home). */
+
+.page-header {
+  background: var(--kleur-wit);
+  border-bottom: 1px solid var(--kleur-vlak);
+}
+
+.page-header-inner {
+  padding-top: 3.5rem;
+  padding-bottom: 3rem;
+}
+
+.accent-rule {
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--kleur-accent);
+  margin: 0.75rem 0 1.5rem;
+}
+
+.page-header-lead {
+  max-width: 60ch;
+  color: var(--kleur-tekst-zacht);
+  font-size: 1.05rem;
+}
+
+/* Judo-filosofie */
+
+.philosophy {
+  background: var(--kleur-achtergrond);
+}
+
+.philosophy-inner {
+  padding-top: 3.5rem;
+  padding-bottom: 1rem;
+}
+
+/* Geen gekleurde randlijn (impeccable: side-tab) — het citaat onderscheidt zich door
+   ruimte en een decoratief aanhalingsteken, niet door een streepje opzij. */
+.quote-block {
+  position: relative;
+  margin: 0;
+  padding: 2.25rem 2.25rem 2rem;
+  background: var(--kleur-wit);
+  border-radius: var(--radius);
+  max-width: 68ch;
+}
+
+.quote-block::before {
+  content: "”";
+  position: absolute;
+  top: 0.25rem;
+  left: 1.5rem;
+  font-size: 3.5rem;
+  line-height: 1;
+  font-weight: 800;
+  color: var(--kleur-accent);
+  /* Was 0.35 — dat verdunde het rood tegen de witte kaart tot een gedempt roze in
+     plaats van het afgesproken logorood. Hoog genoeg om herkenbaar rood te blijven,
+     nog net zacht genoeg om decoratief te blijven in plaats van dominant. */
+  opacity: 0.8;
+}
+
+.quote-block p {
+  position: relative;
+  margin: 0;
+  color: var(--kleur-tekst);
+  font-size: 1.05rem;
+}
+
+/* Jan Rust */
+
+.owner {
+  background: var(--kleur-achtergrond);
+}
+
+.owner-inner {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.owner-photo {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 280px;
+  /* 1:1 — dat is ook de verhouding van de bronfoto, dus geen rare uitsnede nodig. */
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--kleur-vlak);
+}
+
+.owner-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.owner-text {
+  max-width: 60ch;
+}
+
+@media (min-width: 700px) {
+  .owner-inner {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+/* CTA-sectie op binnenpagina's */
+
+.page-cta {
+  background: var(--kleur-tekst);
+  color: var(--kleur-wit);
+}
+
+.page-cta-inner {
+  text-align: center;
+}
+
+.page-cta h2 {
+  color: var(--kleur-wit);
+}
+
+.page-cta .hero-actions {
+  justify-content: center;
+}
+
+.button-outline-dark {
+  border: 1.5px solid var(--kleur-wit);
+  color: var(--kleur-wit);
+}
+
+.button-outline-dark:hover {
+  background: rgba(247, 244, 238, 0.1);
+}
+
+/* Footer */
+
+.site-footer {
+  background: var(--kleur-tekst);
+  color: var(--kleur-achtergrond);
+}
+
+.footer-inner {
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 720px) {
+  .footer-inner {
+    grid-template-columns: repeat(3, 1fr) auto;
+  }
+}
+
+.footer-heading {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--kleur-wit);
+  margin-bottom: 0.75em;
+}
+
+.footer-block a {
+  text-decoration: none;
+}
+
+.footer-block a:hover {
+  color: var(--kleur-accent-op-donker);
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-placeholder {
+  opacity: 0.6;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-self: start;
+}
+
+.footer-nav a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-copy {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--kleur-tekst-zacht-op-donker);
+  padding: 1rem 1.5rem 2rem;
+  margin: 0;
+}
+
+/* Zacht in beeld komen bij scrollen — rustig en traag, geen "spring"-effect.
+   Respecteert prefers-reduced-motion: wie animatie liever niet ziet, ziet de
+   inhoud gewoon meteen. De .in-view-klasse wordt door script.js gezet zodra een
+   element in beeld komt. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.in-view {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Lichte vertraging per kaart, zodat de sportenrij rustig binnendruppelt in
+     plaats van in één keer op te lichten. */
+  .sports-grid .sport-card:nth-child(2) { transition-delay: 0.08s; }
+  .sports-grid .sport-card:nth-child(3) { transition-delay: 0.16s; }
+  .sports-grid .sport-card:nth-child(4) { transition-delay: 0.24s; }
+  .sports-grid .sport-card:nth-child(5) { transition-delay: 0.08s; }
+  .sports-grid .sport-card:nth-child(6) { transition-delay: 0.16s; }
+  .sports-grid .sport-card:nth-child(7) { transition-delay: 0.24s; }
+  .sports-grid .sport-card:nth-child(8) { transition-delay: 0.32s; }
+}

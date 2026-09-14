@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aikido - Sportcentrum Rust</title>
+<meta name="description" content="Aikido bij Sportcentrum Rust in Den Haag: een Japanse krijgskunst zonder stoten of trappen, waarbij je de kracht van een aanval leert ombuigen in plaats van te forceren.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#hoofdinhoud">Ga naar de inhoud</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <!-- Logo van de huidige site, zie index.html voor de toelichting over de resolutie. -->
+      <img src="assets/logo.png" alt="Sportcentrum Rust" width="240" height="73" class="logo-img">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="hoofdmenu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="sr-only">Menu</span>
+    </button>
+    <nav class="main-nav" id="hoofdmenu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="over-ons.html">Over ons</a></li>
+        <li><a href="sporten.html" aria-current="page">Sporten</a></li>
+        <li><a href="lesrooster.html">Lesrooster</a></li>
+        <li><a href="tarieven.html">Tarieven</a></li>
+        <li><a href="ooievaarspas.html">Ooievaarspas</a></li>
+        <li><a href="sluitingsdagen.html">Sluitingsdagen</a></li>
+        <li><a href="wedstrijdverslagen.html">Wedstrijdverslagen</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="inschrijven.html" class="nav-cta">Inschrijven</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="hoofdinhoud">
+
+  <section class="page-header">
+    <div class="section-inner page-header-inner">
+      <div class="sport-detail-header">
+        <div class="sport-icon-wrap">
+          <img src="assets/sporticonen/icoon-aikido.png" alt="">
+        </div>
+        <h1>Aikido</h1>
+      </div>
+      <span class="accent-rule" aria-hidden="true"></span>
+      <a href="sporten.html" class="back-to-overview">← Terug naar alle sporten</a>
+    </div>
+  </section>
+
+  <section class="sport-body">
+    <div class="section-inner sport-body-inner reveal">
+      <p>
+        Aikido is een Japanse krijgskunst zonder stoten of trappen. In plaats daarvan leer
+        je een aanval om te buigen: je gebruikt de kracht en beweging van de ander, niet je
+        eigen spierkracht, om een situatie onschadelijk te maken. Een sport voor wie zich
+        wil kunnen verdedigen zonder zelf te hoeven vechten.
+      </p>
+      <p>
+        Aikido is ontstaan uit Daito Ryu Aiki Ju Jutsu en werd verder ontwikkeld door
+        Morihei Ueshiba (1883-1969). Bij Sportcentrum Rust trainen we Tomiki Aikido, een
+        stijl die, uniek in de aikido-wereld, naast kata (vaste vormen) ook randori kent:
+        vrij oefenen met wedstrijdelementen, gebaseerd op 17 basistechnieken. In
+        Leidschenveen trainen we deze Tomiki Aikido-stijlvorm, en Sportcentrum Rust is
+        aangesloten bij de N.T.A.A.
+      </p>
+      <p>
+        In de les leer je vallen, bewegen, aanvallen herkennen en pareren, en werk je ook
+        met wapens zoals mes, stok en houten zwaard. Via periodieke examens werk je toe naar
+        een hogere band, van wit tot zwart.
+      </p>
+    </div>
+  </section>
+
+  <section class="page-cta">
+    <div class="section-inner page-cta-inner">
+      <h2>Weten wanneer een les is?</h2>
+      <div class="hero-actions">
+        <a href="lesrooster.html" class="button button-accent">Bekijk het lesrooster</a>
+        <a href="contact.html" class="button button-outline-dark">Neem contact op</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-block">
+      <h2 class="footer-heading">Sportcentrum Rust</h2>
+      <p>Oude Middenweg 239-a<br>2491 AH Den Haag</p>
+    </div>
+    <div class="footer-block">
+      <h2 class="footer-heading">Contact</h2>
+      <p>
+        <a href="tel:0707856741">070 785 67 41</a><br>
+        <a href="mailto:info@sportcentrumrust.nl">info@sportcentrumrust.nl</a>
+      </p>
+    </div>
+    <div class="footer-block">
+      <h2 class="footer-heading">Volg ons</h2>
+      <!-- Voorbereid op de koppeling met Facebook/Instagram, zoals toegezegd in de offerte.
+           Nog geen echte pagina's bekend, vervang href="#" zodra die bekend zijn. Beheer
+           van de kanalen zelf valt buiten de opdracht. -->
+      <p class="social-links">
+        <a href="#" aria-label="Sportcentrum Rust op Facebook (nog niet gekoppeld)" class="social-placeholder">Facebook</a>
+        <a href="#" aria-label="Sportcentrum Rust op Instagram (nog niet gekoppeld)" class="social-placeholder">Instagram</a>
+      </p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="contact.html">Contact</a>
+      <a href="sluitingsdagen.html">Sluitingsdagen</a>
+    </nav>
+  </div>
+  <p class="footer-copy">© <span id="jaar"></span> Sportcentrum Rust. Alle rechten voorbehouden.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
