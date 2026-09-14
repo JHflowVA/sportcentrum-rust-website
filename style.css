@@ -706,10 +706,26 @@ p {
 
 /* Ooievaarspas */
 
+.ooievaarspas-banner-link {
+  display: block;
+  text-decoration: none;
+}
+
 .ooievaarspas-banner-img {
+  display: block;
   width: 100%;
   border-radius: var(--radius);
-  margin: 1.5rem 0 2rem;
+  margin: 1.5rem 0 0.75rem;
+}
+
+/* Zichtbaar tekstlabel onder de banner, want op een telefoon is er geen muiscursor die
+   laat zien dat het beeld klikbaar is. */
+.ooievaarspas-banner-cta {
+  display: block;
+  color: var(--kleur-accent);
+  text-decoration: underline;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }
 
 .sport-link {
