@@ -159,6 +159,10 @@ p {
   display: block;
   height: 36px;
   width: auto;
+  /* Overschrijft de algemene "img { max-width: 100% }" hierboven. Zonder deze regel
+     rekent de browser die 100% uit tegen de nog onbekende breedte van dit logo binnen
+     de geneste flex-header, en dat pakt uit als 0 — het logo verdwijnt dan helemaal. */
+  max-width: none;
 }
 
 .nav-toggle {
