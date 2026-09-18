@@ -58,13 +58,19 @@
   <section class="sport-body">
     <div class="section-inner sport-body-inner reveal">
       <!-- GETGRIB-PLUGIN: lesroosterembed, ontvangen van Jolanda op 14 september 2026.
-           De kleuren (rood D30000) staan zo ingesteld in Mary's eigen GetGrib-beheeromgeving
-           en wijken af van het koraalrood/grijs van de rest van de site — dit is bewust niet
-           overschreven, want de kleurinstelling hoort bij het GetGrib-account, niet bij deze
-           pagina. Wijzigen kan alleen via GetGrib zelf, niet hier. -->
+           De kleuren staan NIET vast in Mary's GetGrib-account: het zijn gewone parameters
+           in deze URL, die wij vrij kunnen invullen. Een eerdere notitie hier beweerde het
+           tegendeel; getest en weerlegd op 18 september 2026.
+           Ingesteld op de huisstijl, bewust omgekeerd ten opzichte van GetGrib's standaard:
+           rustige lesregels in het warme wit (F7F4EE) met donkere tekst (4A4844), en het
+           logo-rood (B5011C) alleen op de datumbalken. GetGrib's eigen standaard zet juist
+           elke les als een volvlakke rode balk neer, wat botst met de rustige sfeer uit
+           Moodboard-visueel-ontwerp.md, waar rood het enige accent hoort te zijn.
+           layout[type]=list is bewust: de kalenderweergave negeert deze kleuren volledig,
+           kapt onderaan af en toont op mobiel maar een dag tegelijk. -->
       <div class="embed-getgrib">
         <iframe
-          src="https://sportcentrumrust.gotgrib.nl/calendar?schedule_id=258&amp;layout[type]=list&amp;layout%5BcalendarBackgroundColor%5D=D30000&amp;layout%5BcalendarFontColor%5D=FFFFFF&amp;layout%5BdateFontColor%5D=000000&amp;layout%5BdateBackgroundColor%5D=F7F7F7&amp;layout%5BbackgroundColor%5D=FFFFFF&amp;layout%5BbuttonFontColor%5D=FFFFFF&amp;layout%5BbuttonBackgroundColor%5D=D30000"
+          src="https://sportcentrumrust.gotgrib.nl/calendar?schedule_id=258&amp;layout[type]=list&amp;layout%5BcalendarBackgroundColor%5D=F7F4EE&amp;layout%5BcalendarFontColor%5D=4A4844&amp;layout%5BdateFontColor%5D=F7F4EE&amp;layout%5BdateBackgroundColor%5D=B5011C&amp;layout%5BbackgroundColor%5D=F7F4EE&amp;layout%5BbuttonFontColor%5D=F7F4EE&amp;layout%5BbuttonBackgroundColor%5D=B5011C"
           title="Actueel lesrooster Sportcentrum Rust"
           loading="lazy"
           class="getgrib-iframe"></iframe>
