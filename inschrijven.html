@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Inschrijven - Sportcentrum Rust</title>
-<meta name="description" content="Meld je aan voor een gratis proefles bij Sportcentrum Rust in Den Haag.">
+<meta name="description" content="Schrijf je in bij Sportcentrum Rust in Den Haag: kies een abonnement of strippenkaart.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -49,7 +49,7 @@
       <h1>Inschrijven</h1>
       <span class="accent-rule" aria-hidden="true"></span>
       <p class="page-header-lead">
-        Meld je aan voor een les, rechtstreeks gekoppeld aan het lesrooster en de
+        Kies hieronder een abonnement of strippenkaart, rechtstreeks gekoppeld aan de
         ledenadministratie van Sportcentrum Rust.
       </p>
     </div>
@@ -57,16 +57,23 @@
 
   <section class="sport-body">
     <div class="section-inner sport-body-inner reveal">
-      <!-- GETGRIB-PLUGIN: hier komt de website-plugincode voor het inschrijfformulier.
-           Mary ziet op 14 september 2026 zelf geen inschrijfformulier-optie in haar
-           GetGrib-omgeving (alleen een losse, werkende ledenlink) en neemt dit zelf op met
-           GetGrib. Wachten op wat daaruit komt, zie CLAUDE.md. Nooit een eigen formulier
-           bouwen dat niet met de ledenadministratie synchroniseert. -->
-      <div class="embed-placeholder">
-        <strong>Hier komt het inschrijfformulier</strong>
-        Sportcentrum Rust zoekt dit nog uit met GetGrib. Zodra er een website-plugin is,
-        komt die hier te staan.
+      <!-- GETGRIB-PLUGIN: abonnementen/strippenkaarten, ontvangen van Mary op
+           17 september 2026. Dit is GEEN aanvraagformulier voor een gratis proefles: het is
+           een directe betaalpagina (eigen "Aanschaffen"-knoppen per abonnement/strippenkaart,
+           geen kleurparameters zoals bij het lesrooster, dus in GetGrib's eigen blauwe
+           stijl). Mary schreef er zelf bij: "Het inschrijfformulier voor een proefles moet ik
+           nog maken" — dat komt dus nog. Zie de doorverwijzing hieronder, en CLAUDE.md. -->
+      <div class="embed-getgrib">
+        <iframe
+          src="https://sportcentrumrust.gotgrib.nl/member/selfservice/registration/abonnement_formulier/plugin"
+          title="Abonnementen en strippenkaarten Sportcentrum Rust"
+          loading="lazy"
+          class="getgrib-iframe"></iframe>
       </div>
+      <p class="placeholder-tekst" style="margin-top: 1.5rem;">
+        Wil je eerst een gratis proefles? Dat formulier maakt Sportcentrum Rust nog. Neem tot
+        die tijd <a href="contact.html">contact</a> op om een proefles in te plannen.
+      </p>
     </div>
   </section>
 
