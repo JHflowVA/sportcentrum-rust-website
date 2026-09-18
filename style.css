@@ -1007,6 +1007,29 @@ p {
   margin: 0;
 }
 
+/* Kleine, terughoudende "website door JH Flow"-vermelding — nog niet met Mary
+   afgestemd (zie CLAUDE.md, "0d Bespreekpunt"), dus bewust alleen een icoontje,
+   geen tekst of domeinnaam. Voorlopig geplaatst zodat Mary 'm kan beoordelen
+   tijdens het bezoek; verwijderen als ze nee zegt. */
+.footer-credit {
+  display: inline-flex;
+  vertical-align: middle;
+  margin-left: 0.5em;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.footer-credit:hover,
+.footer-credit:focus-visible {
+  opacity: 1;
+}
+
+.footer-credit img {
+  height: 18px;
+  width: 18px;
+  display: block;
+}
+
 /* Zacht in beeld komen bij scrollen — rustig en traag, geen "spring"-effect.
    Respecteert prefers-reduced-motion: wie animatie liever niet ziet, ziet de
    inhoud gewoon meteen. De .in-view-klasse wordt door script.js gezet zodra een
