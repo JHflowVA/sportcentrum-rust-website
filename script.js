@@ -121,6 +121,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }, minderBeweging ? 0 : overgang);
       }
 
+      // De zoom van de eerste foto begint pas zodra de carousel voor het eerst in beeld is.
+      // Anders was die al afgelopen terwijl je nog bovenaan de pagina zat, en stond de eerste
+      // foto stil tot de eerste wissel terwijl alle volgende foto's wel bewegen.
+      var gestart = false;
+      function start() {
+        if (gestart) { return; }
+        gestart = true;
+        carousel.classList.add('is-gestart');
+      }
+
       function stopTimer() {
         if (timer) { clearInterval(timer); timer = null; }
       }
@@ -191,11 +201,15 @@ document.addEventListener('DOMContentLoaded', function () {
       document.addEventListener('visibilitychange', herstartTimer);
 
       if ('IntersectionObserver' in window) {
+        // 10% is genoeg: op een gewoon scherm steekt de carousel bij het laden al deels onder
+        // de hero uit, en bij 30% zou de timer dan pas lopen nadat je verder gescrold hebt.
         new IntersectionObserver(function (entries) {
           inBeeld = entries[0].isIntersecting;
+          if (inBeeld) { start(); }
           herstartTimer();
-        }, { threshold: 0.3 }).observe(carousel);
+        }, { threshold: 0.1 }).observe(carousel);
       } else {
+        start();
         herstartTimer();
       }
     })();

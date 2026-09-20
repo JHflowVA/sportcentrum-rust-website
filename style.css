@@ -1240,8 +1240,8 @@ p {
   transform-origin: var(--focus, 50% 50%);
 }
 
-.carousel.is-enhanced .carousel-slide.is-actief .carousel-foto,
-.carousel.is-enhanced .carousel-slide.is-vorige .carousel-foto {
+.carousel.is-enhanced.is-gestart .carousel-slide.is-actief .carousel-foto,
+.carousel.is-enhanced.is-gestart .carousel-slide.is-vorige .carousel-foto {
   transform: scale(var(--zoom));
   transition: transform var(--zoom-duur, 4900ms) linear;
   will-change: transform;
@@ -1258,8 +1258,8 @@ p {
     transition: none;
   }
 
-  .carousel.is-enhanced .carousel-slide.is-actief .carousel-foto,
-  .carousel.is-enhanced .carousel-slide.is-vorige .carousel-foto {
+  .carousel.is-enhanced.is-gestart .carousel-slide.is-actief .carousel-foto,
+  .carousel.is-enhanced.is-gestart .carousel-slide.is-vorige .carousel-foto {
     transform: none;
     transition: none;
   }
