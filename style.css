@@ -744,6 +744,9 @@ p {
 .ooievaarspas-banner-img {
   display: block;
   width: 100%;
+  /* height/width staan als attributen in de HTML (tegen verspringen tijdens het laden);
+     zonder auto zou de banner uitgerekt worden tot die vaste hoogte. */
+  height: auto;
   border-radius: var(--radius);
   margin: 1.5rem 0 0.75rem;
 }
@@ -1055,4 +1058,209 @@ p {
   .sports-grid .sport-card:nth-child(6) { transition-delay: 0.16s; }
   .sports-grid .sport-card:nth-child(7) { transition-delay: 0.24s; }
   .sports-grid .sport-card:nth-child(8) { transition-delay: 0.32s; }
+}
+
+/* Carousel met sfeerbeelden (homepage). Zonder JavaScript is dit een gewone rij met
+   scroll-snap: bladeren met swipe, scrollbalk of toetsenbord werkt dan nog. Met JavaScript
+   (script.js zet .is-enhanced) liggen de dia's op elkaar en vloeit de volgende zacht over
+   de vorige heen; dan komen ook de knoppen, het vegen en het automatisch wisselen erbij.
+   De foto's staan in zwart-wit met een warme (sepia-)tint (--foto-filter), zodat foto's uit
+   verschillende bronnen als één geheel ogen en in de warmgrijze sfeer van de site blijven.
+   Sterkte van de tint: het getal achter sepia in de regel --foto-filter hieronder
+   (0 = grijs, 1 = sterk bruin). Zwart-wit weer uit: haal grayscale(1) weg. */
+
+.carousel-sectie {
+  background: var(--kleur-achtergrond);
+}
+
+/* De sportsectie eronder heeft zelf al 4rem ruimte bovenaan. */
+.carousel-sectie .section-inner {
+  padding-bottom: 0;
+}
+
+.carousel {
+  --foto-filter: grayscale(1) sepia(0.35) contrast(1.05);
+}
+
+.carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  border-radius: var(--radius);
+}
+
+.carousel-track:focus-visible {
+  outline: 2px solid var(--kleur-accent);
+  outline-offset: 4px;
+}
+
+/* Zonder JavaScript blijft de scrollbalk zichtbaar: dan is dat de enige manier om met de
+   muis te bladeren. Met de knoppen erbij is hij overbodig. */
+.carousel.is-enhanced .carousel-track {
+  scrollbar-width: none;
+}
+
+.carousel.is-enhanced .carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+/* Telefoon: uitsnede 3:2, zodat breed opgenomen foto's zo min mogelijk van de zijkanten
+   verliezen. Op een computer is het 2:1, zie hieronder. */
+.carousel-foto {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: var(--focus, 50% 50%);
+  filter: var(--foto-filter);
+  border-radius: var(--radius);
+}
+
+@media (min-width: 760px) {
+  .carousel-slide {
+    aspect-ratio: 2 / 1;
+  }
+
+  .carousel-foto {
+    height: 100%;
+    aspect-ratio: auto;
+    border-radius: 0;
+  }
+}
+
+.carousel-bediening {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* display:flex hierboven zou het hidden-attribuut anders overrulen. */
+.carousel-bediening[hidden],
+.carousel-knop[hidden] {
+  display: none;
+}
+
+.carousel-teller {
+  margin: 0 auto 0 0;
+  color: var(--kleur-tekst-zacht);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.carousel-knop {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1.5px solid var(--kleur-tekst);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--kleur-tekst);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.carousel-knop:hover {
+  background: var(--kleur-accent-donker);
+  border-color: var(--kleur-accent-donker);
+  color: var(--kleur-wit);
+}
+
+.carousel-knop:focus-visible {
+  outline: 2px solid var(--kleur-accent);
+  outline-offset: 3px;
+}
+
+.carousel-pauze .icoon-speel,
+.carousel-pauze.is-gepauzeerd .icoon-pauze {
+  display: none;
+}
+
+.carousel-pauze.is-gepauzeerd .icoon-speel {
+  display: block;
+}
+
+/* Overvloeien (alleen met JavaScript). Alle dia's delen dezelfde plek in een raster. De
+   nieuwe dia vervaagt IN over de vorige, die zolang volledig zichtbaar blijft (.is-vorige):
+   zo zakt het beeld nooit even weg naar de achtergrond, wat bij twee dia's die tegelijk
+   vervagen wel gebeurt. De duren (--overgang en --zoom-duur) zet script.js: pas tijden daar
+   aan (interval en overgang), niet hier.
+   Gelijkmatige S-curve (ease-in-out-sine): op de helft van de tijd is het beeld op de helft
+   overgevloeid. Steilere curves (bijv. 0,4 / 0 / 0,2 / 1) doen het meeste in het eerste
+   deel, waardoor 1,4 seconde in de praktijk als 1 seconde voelt en als een wissel leest. */
+.carousel.is-enhanced .carousel-track {
+  display: grid;
+  overflow: hidden;
+  /* Verticaal scrollen blijft van de browser; een horizontale veeg handelt script.js af. */
+  touch-action: pan-y;
+}
+
+.carousel.is-enhanced .carousel-slide {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--overgang, 1400ms) cubic-bezier(0.37, 0, 0.63, 1),
+    visibility 0s linear var(--overgang, 1400ms);
+}
+
+.carousel.is-enhanced .carousel-slide.is-actief {
+  z-index: 2;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--overgang, 1400ms) cubic-bezier(0.37, 0, 0.63, 1), visibility 0s;
+}
+
+.carousel.is-enhanced .carousel-slide.is-vorige {
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+  transition: none;
+}
+
+/* Langzame zoom (Ken Burns). De actieve foto zoomt tijdens zijn hele tijd in beeld heel
+   licht in (1,00 naar --zoom) en blijft dat doen terwijl hij wegvervaagt. Hij begint en eindigt
+   dus nooit stil: bij een korte tijd per foto voelt dat als één doorlopende beweging in plaats
+   van stil staan en dan weer wisselen. De foto zoomt naar het punt --focus toe, zodat een foto
+   met hoofden bovenin niet bovenaan wordt afgesneden. Geen zoom: zet --zoom op 1. */
+.carousel {
+  --zoom: 1.06;
+}
+
+.carousel-foto {
+  transform-origin: var(--focus, 50% 50%);
+}
+
+.carousel.is-enhanced .carousel-slide.is-actief .carousel-foto,
+.carousel.is-enhanced .carousel-slide.is-vorige .carousel-foto {
+  transform: scale(var(--zoom));
+  transition: transform var(--zoom-duur, 4900ms) linear;
+  will-change: transform;
+}
+
+/* Wie minder beweging wil, ziet de foto direct wisselen in plaats van vervagen. */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    scroll-behavior: auto;
+  }
+
+  .carousel.is-enhanced .carousel-slide,
+  .carousel.is-enhanced .carousel-slide.is-actief {
+    transition: none;
+  }
+
+  .carousel.is-enhanced .carousel-slide.is-actief .carousel-foto,
+  .carousel.is-enhanced .carousel-slide.is-vorige .carousel-foto {
+    transform: none;
+    transition: none;
+  }
 }

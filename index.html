@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20260920c">
 </head>
 <body>
 
@@ -60,6 +60,76 @@
       <div class="hero-actions">
         <a href="inschrijven.html" class="button button-accent">Meld je aan voor een gratis les</a>
         <a href="lesrooster.html" class="button button-outline">Bekijk het lesrooster</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carousel met sfeerbeelden, vier dia's (20 september 2026). Alle foto's worden via
+       CSS in zwart-wit met een warme tint getoond (--foto-filter in style.css), zodat foto's
+       uit verschillende bronnen als één geheel ogen. De bestanden zelf zijn in kleur.
+       Herkomst:
+       - sfeer-judo-worp en sfeer-judo-rei: Pexels (bestanden pexels-juan-idier-alba-enriquez-
+         2856684-4392782.jpg en pexels-artempodrez-6253346.jpg, staan in de klantmap), door
+         Jolanda uitgezocht. Pexels-licentie: lees de voorwaarden op de downloadpagina. De
+         worp is verbreed van bijna vierkant naar 2:1 met extra effen achtergrond aan beide
+         kanten (de judoka's zelf zijn niet aangepast), anders viel de uitsnede dwars door de
+         worp.
+       - sfeer-bjj en sfeer-kickboksen: van de oude site (sportcentrumrust.nl). Ze lijken
+         stockfoto's (bestandsnamen volgen het patroon van Pixabay); rechten en herkomst zijn
+         niet gecontroleerd en Mary heeft dit niet goedgekeurd (zie CLAUDE.md, 13 september).
+       De BJJ-foto is rechts 48 px afgesneden: daar zat een donkere verticale balk in de
+         originele foto (een kozijn of rand). Vervang de laatste twee zodra er eigen of
+         gecontroleerde foto's zijn.
+       Alleen sfeer, geen sportnamen of links: de sporten staan er direct onder al, en zo hoeft
+       er niet bij elke sportpagina een passende foto te komen (besluit Jolanda, 20 september).
+       Een dia toevoegen of verplaatsen: kopieer of verplaats een <div class="carousel-slide">
+       hieronder en pas foto en alt-tekst aan, en "n van 4" in aria-label (script.js telt het
+       aantal dia's zelf). Foto-uitsnede: --focus in de style-regel; 50% 0% houdt de bovenkant
+       vast (goed voor foto's waarop hoofden bovenin staan), 50% 50% is het midden.
+       Zonder JavaScript blijft dit een gewone, met de hand of scrollbalk te bladeren rij. -->
+  <section class="carousel-sectie" data-carousel>
+    <div class="section-inner reveal">
+      <div class="carousel" role="region" aria-roledescription="carousel"
+           aria-label="Sfeerbeelden van Sportcentrum Rust">
+        <div class="carousel-track" tabindex="0" aria-live="off">
+          <div class="carousel-slide" role="group" aria-roledescription="dia" aria-label="1 van 4">
+            <img class="carousel-foto" src="assets/sfeer-judo-worp.webp" width="1600" height="800"
+                 style="--focus: 47% 50%"
+                 alt="Een judoworp: een judoka in een wit pak tilt zijn tegenstander in een blauw pak over de heup.">
+          </div>
+          <div class="carousel-slide" role="group" aria-roledescription="dia" aria-label="2 van 4">
+            <img class="carousel-foto" src="assets/sfeer-bjj.webp" width="1232" height="853"
+                 style="--focus: 50% 0%" loading="lazy"
+                 alt="Een man en een vrouw in een judopak oefenen een greep tijdens een jiu-jitsutraining.">
+          </div>
+          <div class="carousel-slide" role="group" aria-roledescription="dia" aria-label="3 van 4">
+            <img class="carousel-foto" src="assets/sfeer-judo-rei.webp" width="1600" height="900"
+                 style="--focus: 50% 58%" loading="lazy"
+                 alt="Twee judoka's knielen tegenover elkaar en buigen, in een zaal met grote ramen waar het licht doorheen valt.">
+          </div>
+          <div class="carousel-slide" role="group" aria-roledescription="dia" aria-label="4 van 4">
+            <img class="carousel-foto" src="assets/sfeer-kickboksen.webp" width="1280" height="790"
+                 style="--focus: 50% 40%" loading="lazy"
+                 alt="Twee boksers in de ring: de een dekt zich af met de handschoenen, de ander valt aan.">
+          </div>
+        </div>
+
+        <!-- De knoppen zijn verborgen tot script.js ze aanzet: zonder JavaScript doen ze
+             niets, dus dan horen ze er ook niet te staan. -->
+        <div class="carousel-bediening" hidden>
+          <p class="carousel-teller" aria-hidden="true"><span data-teller-nu>1</span> / <span data-teller-totaal>4</span></p>
+          <button type="button" class="carousel-knop carousel-pauze" data-pauze
+                  aria-label="Pauzeer het automatisch wisselen">
+            <svg class="icoon-pauze" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+            <svg class="icoon-speel" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5.5v13l10-6.5z"/></svg>
+          </button>
+          <button type="button" class="carousel-knop" data-vorige aria-label="Vorige foto">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <button type="button" class="carousel-knop" data-volgende aria-label="Volgende foto">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -175,6 +245,6 @@
   <p class="footer-copy">© <span id="jaar"></span> Sportcentrum Rust. Alle rechten voorbehouden. <a class="footer-credit" href="https://olive-antonia-39-e74b94.tiiny.site" target="_blank" rel="noopener" aria-label="Website door JH Flow" title="Website door JH Flow"><img src="assets/jhflow-logo.png" alt="" width="18" height="18"></a></p>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=20260920c"></script>
 </body>
 </html>
