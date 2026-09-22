@@ -67,8 +67,11 @@ document.addEventListener('DOMContentLoaded', function () {
       var minderBeweging =
         !!window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var huidig = 0;
+      // Pauzeren gebeurt alleen nog via de pauzeknop, toetsenbordfocus of een vinger op een
+      // telefoon. De muis erover laten gaan pauzeert bewust niet meer (besluit Jolanda,
+      // 22 september) — dat zorgde ervoor dat de eerste foto leek vast te lopen zodra iemand
+      // er met de muis op bleef staan.
       var gebruikerPauze = minderBeweging; // pauzeknop, of vinger erop gezet
-      var muisErboven = false;
       var toetsenbordErin = false;         // alleen echte toetsenbordfocus, zie focusin
       var inBeeld = !('IntersectionObserver' in window);
       var timer = null;
@@ -138,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Zet de timer opnieuw op de volle tijd, of laat hem uit als er reden is om te wachten.
       function herstartTimer() {
         stopTimer();
-        if (!gebruikerPauze && !muisErboven && !toetsenbordErin && inBeeld && !document.hidden) {
+        if (!gebruikerPauze && !toetsenbordErin && inBeeld && !document.hidden) {
           timer = setInterval(function () { toon(huidig + 1); }, interval);
         }
       }
@@ -162,8 +165,6 @@ document.addEventListener('DOMContentLoaded', function () {
         herstartTimer();
       });
 
-      carousel.addEventListener('mouseenter', function () { muisErboven = true; herstartTimer(); });
-      carousel.addEventListener('mouseleave', function () { muisErboven = false; herstartTimer(); });
       // Alleen toetsenbordfocus pauzeert. Na een muisklik op een knop blijft de focus er ook
       // staan, en dan zou het wisselen anders stilvallen tot je ergens anders klikt.
       carousel.addEventListener('focusin', function (e) {
