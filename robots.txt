@@ -1,0 +1,6 @@
+# Sportcentrum Rust. Dit bestand vertelt Google en andere zoekmachines dat ze de hele
+# site mogen lezen, en waar de sitemap (het lijstje met alle pagina's) staat.
+User-agent: *
+Allow: /
+
+Sitemap: https://sportcentrumrust.nl/sitemap.xml
