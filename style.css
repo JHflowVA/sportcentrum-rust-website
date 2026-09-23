@@ -621,6 +621,12 @@ p {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0 2.5rem;
+  table-layout: fixed;
+}
+
+.info-table th:first-child,
+.info-table td:first-child {
+  width: 45%;
 }
 
 .info-table caption {
