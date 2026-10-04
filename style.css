@@ -1185,6 +1185,15 @@ p {
   color: var(--kleur-accent-op-donker);
 }
 
+/* Privacy en Cookie-instellingen: moeten vindbaar zijn, maar hoeven niet op te vallen
+   (wens Jolanda, 4 oktober 2026). Zelfde gedimde tint als de copyrightregel. */
+.footer-nav-zacht a,
+.footer-nav-zacht .tekst-knop {
+  color: var(--kleur-tekst-zacht-op-donker);
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
 /* Knop die eruitziet als een link: "Cookie-instellingen" in de footer en op privacy.html */
 .tekst-knop {
   font: inherit;
