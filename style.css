@@ -1068,9 +1068,19 @@ p {
   gap: 2rem;
 }
 
+/* Drie blokken met kopje, dan twee linkblokjes: Contact/Sluitingsdagen en
+   Privacy/Cookie-instellingen (naast elkaar op verzoek van Jolanda, 4 oktober 2026).
+   Op een tablet passen vijf kolommen niet; dan komen de linkblokjes op een tweede rij. */
 @media (min-width: 720px) {
   .footer-inner {
-    grid-template-columns: repeat(3, 1fr) auto;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .footer-inner {
+    grid-template-columns: repeat(3, 1fr) auto auto;
+    column-gap: 2.5rem;
   }
 }
 
@@ -1106,9 +1116,16 @@ p {
   align-self: start;
 }
 
-.footer-nav a {
+.footer-nav a,
+.footer-nav .tekst-knop {
   text-decoration: none;
   font-weight: 600;
+  color: var(--kleur-wit);
+}
+
+.footer-nav a:hover,
+.footer-nav .tekst-knop:hover {
+  color: var(--kleur-accent-op-donker);
 }
 
 /* Knop die eruitziet als een link: "Cookie-instellingen" in de footer en op privacy.html */
