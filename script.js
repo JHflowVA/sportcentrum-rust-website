@@ -39,6 +39,100 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Cookiemelding en Google Analytics (metings-ID hieronder). Analytics laadt pas nadat de
+  // bezoeker op Accepteren heeft gedrukt; zonder keuze of bij Weigeren gaat er niets naar
+  // Google. De keuze staat in localStorage. "Cookie-instellingen" in de footer (en op
+  // privacy.html) haalt de melding terug, zodat iemand zijn keuze kan veranderen; wie dan
+  // weigert, raakt ook de Analytics-cookies kwijt. Weigeren en Accepteren zien er bewust
+  // hetzelfde uit: weigeren moet volgens de privacyregels net zo makkelijk zijn.
+  var GA_ID = 'G-RQ2S0NXNVD';
+  var TOESTEMMING = 'rust_cookie_toestemming'; // "ja" of "nee"
+  var analyticsGeladen = false;
+  var cookieMelding = null;
+
+  function leesKeuze() {
+    try { return window.localStorage.getItem(TOESTEMMING); } catch (fout) { return null; }
+  }
+  function bewaarKeuze(waarde) {
+    try { window.localStorage.setItem(TOESTEMMING, waarde); } catch (fout) { /* privévenster */ }
+  }
+
+  function laadAnalytics() {
+    window['ga-disable-' + GA_ID] = false;
+    if (analyticsGeladen) { return; }
+    analyticsGeladen = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID);
+    var gaScript = document.createElement('script');
+    gaScript.async = true;
+    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(gaScript);
+  }
+
+  function stopAnalytics() {
+    window['ga-disable-' + GA_ID] = true;
+    var hoofddomein = window.location.hostname.replace(/^www\./, '');
+    document.cookie.split(';').forEach(function (stuk) {
+      var naam = stuk.split('=')[0].trim();
+      if (naam === '_ga' || naam.indexOf('_ga_') === 0) {
+        ['', window.location.hostname, '.' + hoofddomein].forEach(function (domein) {
+          document.cookie = naam + '=; Max-Age=0; path=/' + (domein ? '; domain=' + domein : '');
+        });
+      }
+    });
+  }
+
+  function verbergCookieMelding() {
+    if (!cookieMelding) { return; }
+    cookieMelding.hidden = true;
+    document.body.style.paddingBottom = '';
+  }
+
+  function toonCookieMelding(metFocus) {
+    if (!cookieMelding) {
+      cookieMelding = document.createElement('div');
+      cookieMelding.className = 'cookie-melding';
+      cookieMelding.setAttribute('role', 'region');
+      cookieMelding.setAttribute('aria-label', 'Cookiekeuze');
+      cookieMelding.innerHTML =
+        '<div class="cookie-melding-inner">' +
+          '<p>We willen graag tellen hoeveel mensen deze website bezoeken, met Google ' +
+          'Analytics. Dat doen we alleen als jij dat goed vindt. ' +
+          '<a href="privacy.html">Meer over privacy</a></p>' +
+          '<div class="cookie-knoppen">' +
+            '<button type="button" class="cookie-knop" data-keuze="nee">Weigeren</button>' +
+            '<button type="button" class="cookie-knop" data-keuze="ja">Accepteren</button>' +
+          '</div>' +
+        '</div>';
+      cookieMelding.querySelectorAll('[data-keuze]').forEach(function (knop) {
+        knop.addEventListener('click', function () {
+          var keuze = knop.getAttribute('data-keuze');
+          bewaarKeuze(keuze);
+          verbergCookieMelding();
+          if (keuze === 'ja') { laadAnalytics(); } else { stopAnalytics(); }
+        });
+      });
+      document.body.appendChild(cookieMelding);
+    }
+    cookieMelding.hidden = false;
+    // Ruimte onder de pagina, zodat de melding de footer niet blijvend afdekt.
+    document.body.style.paddingBottom = cookieMelding.offsetHeight + 'px';
+    if (metFocus) { cookieMelding.querySelector('.cookie-knop').focus(); }
+  }
+
+  var eerdereKeuze = leesKeuze();
+  if (eerdereKeuze === 'ja') {
+    laadAnalytics();
+  } else if (eerdereKeuze !== 'nee') {
+    toonCookieMelding(false);
+  }
+
+  document.querySelectorAll('[data-cookie-instellingen]').forEach(function (knop) {
+    knop.addEventListener('click', function () { toonCookieMelding(true); });
+  });
+
   // Contact: na versturen stuurt de formulier-Worker de bezoeker terug met ?verstuurd=ja of
   // ?verstuurd=nee. Toon de bijbehorende melding en haal het stukje daarna uit de adresbalk,
   // zodat de melding niet opnieuw verschijnt bij vernieuwen of een gedeelde link.

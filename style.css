@@ -1111,6 +1111,78 @@ p {
   font-weight: 600;
 }
 
+/* Knop die eruitziet als een link: "Cookie-instellingen" in de footer en op privacy.html */
+.tekst-knop {
+  font: inherit;
+  font-weight: 600;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sport-body-inner .tekst-knop {
+  font-weight: inherit;
+  color: var(--kleur-accent);
+  text-decoration: underline;
+}
+
+/* Cookiemelding onder in beeld (gemaakt door script.js) */
+.cookie-melding {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  background: var(--kleur-tekst);
+  color: var(--kleur-wit);
+  box-shadow: 0 -2px 12px rgba(74, 72, 68, 0.25);
+}
+
+.cookie-melding-inner {
+  max-width: var(--max-breedte);
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+}
+
+.cookie-melding p {
+  margin: 0;
+  flex: 1 1 22rem;
+  font-size: 0.95rem;
+}
+
+.cookie-melding a {
+  color: var(--kleur-wit);
+  text-decoration: underline;
+}
+
+.cookie-knoppen {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.cookie-knop {
+  font: inherit;
+  font-weight: 700;
+  padding: 0.6em 1.3em;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--kleur-wit);
+  background: var(--kleur-wit);
+  color: var(--kleur-tekst);
+  cursor: pointer;
+}
+
+.cookie-knop:hover {
+  background: var(--kleur-achtergrond);
+}
+
 .footer-copy {
   text-align: center;
   font-size: 0.8rem;
