@@ -39,6 +39,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Contact: na versturen stuurt de formulier-Worker de bezoeker terug met ?verstuurd=ja of
+  // ?verstuurd=nee. Toon de bijbehorende melding en haal het stukje daarna uit de adresbalk,
+  // zodat de melding niet opnieuw verschijnt bij vernieuwen of een gedeelde link.
+  var verstuurd = new URLSearchParams(window.location.search).get('verstuurd');
+  if (verstuurd === 'ja' || verstuurd === 'nee') {
+    var melding = document.querySelector('[data-melding="' + verstuurd + '"]');
+    if (melding) { melding.hidden = false; }
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.hash);
+    }
+  }
+
   // Homepage-carousel (index.html, [data-carousel]). Zonder dit script blijven de dia's een
   // gewone, met de hand te bladeren rij. Met dit script liggen alle dia's op elkaar en
   // vloeit de volgende zacht over de vorige heen (zie .carousel.is-enhanced in style.css);

@@ -767,6 +767,46 @@ p {
   min-height: 120px;
 }
 
+/* Lokveld tegen spam: buiten beeld geschoven in plaats van display:none, omdat sommige
+   robots verborgen velden juist overslaan. */
+.form-lokveld {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-privacy {
+  font-size: 0.85rem;
+  color: var(--kleur-tekst-zacht);
+  margin: 0;
+}
+
+/* Na versturen springt de pagina naar #formulier; zonder deze ruimte valt de melding
+   onder de vaste menubalk. */
+#formulier {
+  scroll-margin-top: 7rem;
+}
+
+/* Melding na versturen (zie script.js), boven het formulier */
+.form-melding {
+  border-radius: var(--radius);
+  padding: 0.9em 1.1em;
+  margin: 0 0 1rem;
+  font-weight: 600;
+  background: var(--kleur-wit);
+  border: 1.5px solid var(--kleur-vlak);
+}
+
+.form-melding-fout {
+  border-color: var(--kleur-accent);
+}
+
+.form-melding a {
+  color: var(--kleur-accent);
+}
+
 .contact-info-list {
   list-style: none;
   margin: 1rem 0 2rem;
