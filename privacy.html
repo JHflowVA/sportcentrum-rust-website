@@ -5,10 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy en cookies - Sportcentrum Rust</title>
 <meta name="description" content="Hoe Sportcentrum Rust in Den Haag omgaat met je gegevens via de website: contactformulier, bezoekersstatistieken en cookies.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261004b">
+<link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css?v=20261004c">
 </head>
 <body>
 
@@ -54,33 +52,42 @@
     </div>
   </section>
 
-  <!-- Opgesteld op 4 oktober 2026 door JH Flow, als concept voor Sportcentrum Rust. Mary moet
-       de tekst goedkeuren vóór publicatie: Sportcentrum Rust is verantwoordelijk, niet JH Flow.
-       Twee keuzes zijn een voorstel en moeten door Mary bevestigd worden: de bewaartermijn van
-       berichten (1 jaar) en de bewaartermijn in Analytics (staat hier als "maximaal 14
-       maanden", de grootste instelling die Google toestaat; dat klopt dus altijd). -->
+  <!-- Opgesteld op 4 oktober 2026 door JH Flow, als concept voor Sportcentrum Rust, en
+       dezelfde dag aangevuld na een vergelijking met de verklaringen van Basic-Fit en
+       SportCity. Mary moet de tekst goedkeuren vóór publicatie: Sportcentrum Rust is
+       verantwoordelijk, niet JH Flow. Rechtsvorm en KvK-nummer komen uit het
+       KvK-handelsregister (opgezocht door Jolanda). Voorstel, door Mary te bevestigen: de
+       bewaartermijn van berichten (1 jaar). "Maximaal 14 maanden" bij Analytics is de
+       grootste instelling die Google toestaat en klopt dus altijd.
+       Bewust níét opgenomen: camera's, gezondheidsgegevens en de ledenadministratie. Deze
+       verklaring gaat alleen over de website; dat staat er ook in. -->
   <section class="sport-body">
     <div class="section-inner sport-body-inner reveal">
 
       <h2>Wie we zijn</h2>
       <p>
-        Deze website is van Sportcentrum Rust, Oude Middenweg 239-a, 2491 AH Den Haag.
-        Vragen over je gegevens kun je stellen via
+        Deze website is van Sportcentrum Rust (vennootschap onder firma, KvK 57467714),
+        Oude Middenweg 239-a, 2491 AH Den Haag. Vragen over je gegevens kun je stellen via
         <a href="mailto:info@sportcentrumrust.nl">info@sportcentrumrust.nl</a> of
         <a href="tel:0707856741">070 785 67 41</a>.
+      </p>
+      <p>
+        Deze verklaring gaat over de website. Word je lid, dan regelen we je gegevens via
+        onze ledenadministratie; daarover vertellen we je bij de inschrijving meer.
       </p>
 
       <h2>Het contactformulier</h2>
       <p>
         Stuur je een bericht via het <a href="contact.html">contactformulier</a>, dan krijgen we je
         naam, je e-mailadres, het onderwerp en je bericht. Die gebruiken we alleen om je vraag
-        te beantwoorden. We sturen je geen nieuwsbrief of reclame en geven je gegevens niet aan
-        anderen.
+        te beantwoorden. Dat mag omdat je ons zelf een vraag stelt en wij die willen
+        beantwoorden (gerechtvaardigd belang). We sturen je geen nieuwsbrief of reclame en
+        verkopen je gegevens niet.
       </p>
       <p>
         Je bericht komt via Cloudflare (die de website voor ons draait) als e-mail binnen in
         onze mailbox bij Google (Gmail). We bewaren berichten tot maximaal een jaar na het
-        laatste contact, tenzij je lid wordt; dan horen ze bij je ledenadministratie.
+        laatste contact.
       </p>
 
       <h2>Bezoekersstatistieken (Google Analytics)</h2>
@@ -88,40 +95,38 @@
         We willen graag weten hoeveel mensen de website bezoeken en welke pagina's ze bekijken.
         Daarvoor gebruiken we Google Analytics, <strong>alleen als je daar toestemming voor
         geeft</strong> via de melding onder in beeld. Geef je geen toestemming, dan wordt er niets
-        gemeten.
+        gemeten. Ben je jonger dan 16, vraag dan eerst een ouder voordat je op Accepteren drukt.
       </p>
       <p>
         Met toestemming plaatst Google Analytics cookies (<code>_ga</code> en
         <code>_ga_RQ2S0NXNVD</code>) die maximaal twee jaar blijven staan. Google ziet dan onder
         andere welke pagina's je bekijkt, met welk apparaat en uit welke regio je komt. Wij zien
         alleen totalen, niet wie jij bent. Google bewaart deze gegevens maximaal 14 maanden.
-        Google is een bedrijf uit de Verenigde Staten; het kan zijn dat gegevens daar worden
-        verwerkt.
       </p>
       <p>
-        Je kunt je keuze altijd veranderen via
+        Je kunt je toestemming altijd weer intrekken via
         <button type="button" class="tekst-knop" data-cookie-instellingen>Cookie-instellingen</button>,
         ook onderaan elke pagina.
       </p>
 
       <h2>Andere diensten op deze website</h2>
-      <p>Een paar onderdelen van de website komen van andere bedrijven:</p>
       <ul>
         <li>
           <strong>Lesrooster en inschrijven</strong> komen van GetGrib, ons
           ledenadministratiesysteem. Schrijf je je in, dan gaan je gegevens rechtstreeks naar
-          GetGrib.
+          GetGrib. Hoe lang zij die bewaren staat in de privacyverklaring van GetGrib.
         </li>
         <li>
-          <strong>De kaart</strong> op de contactpagina komt van Google Maps.
-        </li>
-        <li>
-          <strong>Het lettertype</strong> van de website komt van Google Fonts.
+          <strong>De kaart</strong> op de contactpagina komt van Google Maps. Die laadt pas als
+          je zelf op "Kaart tonen" drukt; dan ziet Google je IP-adres.
         </li>
       </ul>
+
+      <h2>Buiten Europa</h2>
       <p>
-        Je browser maakt daarvoor contact met die bedrijven, en zij zien dan je IP-adres. Zij
-        hebben daarvoor hun eigen privacyverklaring.
+        Cloudflare en Google zijn bedrijven uit de Verenigde Staten. Het kan zijn dat je gegevens
+        daar worden verwerkt. Beide bedrijven gebruiken daarvoor de afspraken die de Europese
+        Unie heeft goedgekeurd (standaardcontractbepalingen).
       </p>
 
       <h2>Wat we in je browser opslaan</h2>
@@ -131,12 +136,26 @@
         we kunnen het niet uitlezen buiten deze website.
       </p>
 
-      <h2>Je rechten</h2>
+      <h2>Beveiliging</h2>
       <p>
-        Je mag altijd vragen welke gegevens we van je hebben, ze laten verbeteren of laten
-        verwijderen. Mail ons daarvoor op
-        <a href="mailto:info@sportcentrumrust.nl">info@sportcentrumrust.nl</a>. Ben je niet
-        tevreden over hoe we met je gegevens omgaan, dan kun je een klacht indienen bij de
+        De website werkt alleen via een beveiligde verbinding (https). Berichten uit het
+        formulier komen alleen in onze eigen mailbox terecht en worden nergens anders op de
+        website bewaard.
+      </p>
+
+      <h2>Je rechten</h2>
+      <p>Je mag ons altijd vragen om:</p>
+      <ul>
+        <li>te laten zien welke gegevens we van je hebben;</li>
+        <li>je gegevens te verbeteren of te verwijderen;</li>
+        <li>minder met je gegevens te doen, of ermee te stoppen (bezwaar);</li>
+        <li>je gegevens aan jou of een ander over te dragen;</li>
+        <li>je toestemming in te trekken.</li>
+      </ul>
+      <p>
+        Mail ons daarvoor op <a href="mailto:info@sportcentrumrust.nl">info@sportcentrumrust.nl</a>.
+        We reageren binnen een maand. Ben je niet tevreden over hoe we met je gegevens omgaan,
+        dan kun je een klacht indienen bij de
         <a href="https://autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener">Autoriteit Persoonsgegevens</a>.
       </p>
 
@@ -178,6 +197,6 @@
   <p class="footer-copy">© <span id="jaar"></span> Sportcentrum Rust. Alle rechten voorbehouden. <a class="footer-credit" href="https://olive-antonia-39-e74b94.tiiny.site" target="_blank" rel="noopener" aria-label="Website door JH Flow" title="Website door JH Flow"><img src="assets/jhflow-logo.png" alt="" width="18" height="18"></a></p>
 </footer>
 
-<script src="script.js?v=20261004b"></script>
+<script src="script.js?v=20261004c"></script>
 </body>
 </html>

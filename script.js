@@ -98,9 +98,8 @@ document.addEventListener('DOMContentLoaded', function () {
       cookieMelding.setAttribute('aria-label', 'Cookiekeuze');
       cookieMelding.innerHTML =
         '<div class="cookie-melding-inner">' +
-          '<p>We willen graag tellen hoeveel mensen deze website bezoeken, met Google ' +
-          'Analytics. Dat doen we alleen als jij dat goed vindt. ' +
-          '<a href="privacy.html">Meer over privacy</a></p>' +
+          '<p>We gebruiken cookies om bezoekers te tellen. ' +
+          '<a href="privacy.html">Meer info</a></p>' +
           '<div class="cookie-knoppen">' +
             '<button type="button" class="cookie-knop" data-keuze="nee">Weigeren</button>' +
             '<button type="button" class="cookie-knop" data-keuze="ja">Accepteren</button>' +
@@ -132,6 +131,24 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('[data-cookie-instellingen]').forEach(function (knop) {
     knop.addEventListener('click', function () { toonCookieMelding(true); });
   });
+
+  // Contact: de Google Maps-kaart laadt pas na een klik op "Kaart tonen" (zie contact.html).
+  // Zonder JavaScript blijft de knop verborgen en is er alleen de link naar Google Maps.
+  var kaart = document.querySelector('[data-kaart]');
+  if (kaart) {
+    var kaartKnop = kaart.querySelector('[data-kaart-laden]');
+    kaartKnop.hidden = false;
+    kaartKnop.addEventListener('click', function () {
+      var iframe = document.createElement('iframe');
+      iframe.src = kaart.getAttribute('data-kaart-src');
+      iframe.title = kaart.getAttribute('data-kaart-titel');
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.allowFullscreen = true;
+      kaart.innerHTML = '';
+      kaart.appendChild(iframe);
+      iframe.focus();
+    });
+  }
 
   // Contact: na versturen stuurt de formulier-Worker de bezoeker terug met ?verstuurd=ja of
   // ?verstuurd=nee. Toon de bijbehorende melding en haal het stukje daarna uit de adresbalk,
